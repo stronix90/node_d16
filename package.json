@@ -1,0 +1,29 @@
+{
+    "name": "30920_lunabrian_desafio_15",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "1_nodemon": "nodemon index_1.js",
+        "2_fore": "forever index.js"
+    },
+    "dependencies": {
+        "@faker-js/faker": "^7.1.0",
+        "bcrypt": "^5.0.1",
+        "dotenv": "^16.0.1",
+        "express": "^4.18.1",
+        "express-handlebars": "^5.3.5",
+        "express-session": "^1.17.1",
+        "minimist": "^1.2.6",
+        "moment": "^2.29.3",
+        "mongoose": "^6.3.5",
+        "nodemon": "^2.0.16",
+        "normalizr": "^3.6.2",
+        "passport": "^0.4.1",
+        "passport-local": "^1.0.0",
+        "socket.io": "^4.5.1"
+    }
+}

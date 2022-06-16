@@ -1,0 +1,97 @@
+:root {
+    --bg1: #fdc830;
+    --bg2: #f37335;
+
+    --destacado: #fee160;
+    --destacado_light: #f0c401;
+}
+
+body {
+    background: var(--bg1);
+    background: -webkit-linear-gradient(to right, var(--bg2), var(--bg1));
+    background: linear-gradient(to right, var(--bg2), var(--bg1));
+}
+
+.productImage {
+    width: 94px;
+    height: 94px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 0 #9f9f9f;
+    object-fit: cover;
+}
+
+.card {
+    background-color: #ffffff80;
+}
+
+.customRow > li {
+    border-bottom: solid 1px #f89b33;
+    transition: 0.3s all ease-in-out;
+}
+.customRow > li:hover {
+    background: #f8bd2f50;
+}
+
+.customBtn {
+    background: transparent;
+    box-shadow: 0 0 5px 0 #fcb360;
+}
+
+.customBtn:hover {
+    background: #f89b33;
+    box-shadow: 0 0 5px 0 #ff9317;
+}
+
+.customBtn:hover i {
+    color: rgb(255, 255, 255);
+}
+
+/* ========================================== */
+/* MENSAJES */
+/* ========================================== */
+
+.liMessages {
+    list-style: none;
+    margin: 1rem;
+}
+
+.liMessages_me {
+    margin-left: auto !important;
+}
+
+.liMessages__msgContainer {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 2px 0 #a7a7a7;
+    border-radius: 1rem 0 1rem 1rem;
+    margin-left: 2.5rem;
+    background: #f9bb2f;
+}
+
+.liMessages_me__msgContainer {
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0.5rem 1rem;
+    box-shadow: 0 0 2px 0 #a7a7a7;
+    border-radius: 0 1rem 1rem 1rem;
+    margin-right: 2.5rem;
+    background: var(--destacado);
+}
+
+button {
+    border: solid 1px var(--destacado_light);
+    background: var(--destacado);
+    line-height: 2rem;
+}
+
+button:hover {
+    box-shadow: 0 0 10px 0 var(--destacado_light);
+}
+
+input {
+    line-height: 2rem;
+    border: solid 1px var(--destacado_light);
+    background-color: #ffffff90;
+    padding-left: 0.5rem;
+}

@@ -1,0 +1,124 @@
+<div
+    class="card mt-4 p-3 shadow-lg d-flex flex-row justify-content-between align-items-center"
+>
+    <h5 class="m-0">Bienvenido {{user.name}}</h5>
+
+    <form action="/logout" method="get" class="m-0">
+        <button type="submit">Cerrar sesión</button>
+    </form>
+</div>
+
+<div class="card mt-4 p-3 shadow-lg">
+    <h1>Listado de productos</h1>
+    <div id="productContainer"></div>
+</div>
+
+<div class="card mt-4 mb-3 px-3 pt-3 shadow-lg">
+    <h1>Chat</h1>
+
+    <form id="formLogin" class="m-0">
+
+        <div id="loginContainer">
+            <div class="mb-3">
+                <input
+                    type="hidden"
+                    name="email"
+                    id="email"
+                    placeholder="Inicie sesión ingresando su email"
+                    value={{user.email}}
+                    required
+                    readonly
+                />
+            </div>
+
+            <div class="mb-3">
+                <input
+                    type="hidden"
+                    name="nombre"
+                    id="nombre"
+                    placeholder="Nombre"
+                    value={{user.name}}
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="hidden"
+                    name="apellido"
+                    id="apellido"
+                    placeholder="Apellido"
+                    value={{user.lastname}}
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="hidden"
+                    name="edad"
+                    id="edad"
+                    placeholder="Edad"
+                    value={{user.age}}
+                    required
+                />
+            </div>
+            <div class="mb-3">
+                <input
+                    type="text"
+                    name="alias"
+                    id="alias"
+                    placeholder="Alias"
+                    value={{user.nickname}}
+                />
+            </div>
+            <div class="mb-3">
+                <select class="form-control" name="avatar" id="avatar">
+                    <option value="/avatar/abuelita.png">Abuelita</option>
+                    <option value="/avatar/beach.png">Playa</option>
+                    <option value="/avatar/snowboarder.png">Snowboarder</option>
+                    <option value="/avatar/surfer.png">Surfiste</option>
+                    <option value="/avatar/traveler.png">Viajer</option>
+                    <option value="/avatar/zookeeper.png">Zookeeper</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+    </form>
+
+    <form id="formMsg" class="m-0 d-none">
+        <p>Tamaño de datos normalizados respecto al original:
+            <span id="savedSpace"></span>%</p>
+        <div
+            id="messageContainer"
+            class="card p-3 shadow-lg"
+            style="height: 70vh; overflow: auto; background-image: url('https://i.pinimg.com/originals/51/ed/c0/51edc046eb80046ee4755ee71d0f19ca.jpg');"
+        >
+
+            <ul
+                id="messageUL"
+                style="display: flex; flex-direction: column; padding: 0"
+            >
+            </ul>
+
+        </div>
+
+        <div class="my-2 d-flex">
+            <input
+                class="form-control"
+                type="text"
+                name="message"
+                id="message"
+                placeholder="Escriba un mensaje"
+                required
+            />
+            <button class="btn btn-warning shadow" type="submit">Enviar</button>
+        </div>
+
+    </form>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="js/main.js"></script>
+<script src="js/messages.js"></script>
+<script src="js/products.js"></script>

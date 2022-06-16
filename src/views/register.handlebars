@@ -1,0 +1,75 @@
+<div class="card mt-4 p-3 shadow-lg">
+    <h1 class="text-center">Registro</h1>
+    <form
+        id="formRegister"
+        action="/api/register"
+        method="post"
+        class="d-flex align-items-center flex-column"
+    >
+        <div class="mb-3">
+            <input
+                type="email"
+                name="email"
+                placeholder="Email"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <input
+                type="password"
+                name="password"
+                placeholder="Contraseña"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Nombre"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <input
+                type="text"
+                name="lastName"
+                id="lastName"
+                placeholder="Apellido"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <input
+                type="number"
+                name="age"
+                id="age"
+                placeholder="Edad"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <input
+                type="text"
+                name="nickname"
+                id="nickname"
+                placeholder="Alias"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <button type="submit">Registrarse</button>
+        </div>
+        <div class="mb-3"><p>¿Ya tenés cuenta?
+                <a href="/login">Iniciá sesión</a></p></div>
+    </form>
+</div>
+
+<script src="js/register.js"></script>

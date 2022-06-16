@@ -1,0 +1,30 @@
+<div class="card mt-4 p-3 shadow-lgv">
+    <h1 class="text-center">Login</h1>
+    <form id="formLogin" action="/api/login" method="post" class="d-flex align-items-center flex-column">
+        <div class="mb-3">
+            <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email"
+                required
+            />
+        </div>
+
+        <div class="mb-3">
+            <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                required
+            />
+        </div>
+        <div class="mb-3">
+            <button type="submit">Iniciar sesión</button>
+        </div>
+        <div class="mb-3"><p>¿Aún no tenés cuenta? <a href="/signup">Registrarse</a></p></div>
+    </form>
+</div>
+
+<script src="js/login.js"></script>
