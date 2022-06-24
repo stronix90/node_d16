@@ -16,11 +16,21 @@ passport.use(
             let user = await usersDao.checkUser(email);
             user = user[0]?._doc;
 
-            if (user) return done({ message: "El usuario ya existe" }, false);
+            if (user)
+                return done(
+                    {
+                        code: "failSignup",
+                        message: "El usuario ya existe",
+                    },
+                    false
+                );
 
             if (!password)
                 return done(
-                    { message: "Por favor, ingrese una contraseña" },
+                    {
+                        code: "failSignup",
+                        message: "Por favor, ingrese una contraseña",
+                    },
                     false
                 );
 
@@ -49,10 +59,24 @@ passport.use(
             let user = await usersDao.checkUser(email);
             user = user[0]?._doc;
 
-            if (!user) return done(null, false);
+            if (!user)
+                return done(
+                    {
+                        code: "failLogin",
+                        message: "Usuario o contraseña incorrecta",
+                    },
+                    false
+                );
 
             const passValidation = await checkPass(password, user.password);
-            if (!passValidation) return done(null, false);
+            if (!passValidation)
+                return done(
+                    {
+                        code: "failLogin",
+                        message: "Usuario o contraseña incorrecta",
+                    },
+                    false
+                );
 
             delete user.password;
 

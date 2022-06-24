@@ -20,5 +20,9 @@ document.getElementById("formRegister").addEventListener("submit", (e) => {
         .then((res) => {
             window.location.href = "/";
         })
-        .catch((err) => alert(err.response.data.error));
+        .catch((err) => {
+            alert(
+                err.response.data.error.message || "Error al procesar solicitud"
+            );
+        });
 });

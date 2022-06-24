@@ -1,6 +1,7 @@
 const renderRouter = require("express").Router();
 const { usersDao } = require("../daos/index");
 const { isAuth } = require("../middleware/auth");
+const logger = require("../middleware/logger");
 
 renderRouter.get("/", isAuth, async (req, res) => {
     const user = req.user;
@@ -25,8 +26,18 @@ renderRouter.get("/logout", isAuth, async (req, res) => {
 });
 
 renderRouter.get("/info", (req, res) => {
-    console.log(require("os").cpus().length)
-    const info = {
+    const info = getInfo();
+    res.render("info", { info });
+});
+
+renderRouter.get("/info2", (req, res) => {
+    const info = getInfo();
+    console.log(info);
+    res.render("info", { info });
+});
+
+const getInfo = () => {
+    return {
         argumentos: process.argv.slice(2),
         OS: process.platform,
         nodeVersion: process.version,
@@ -34,9 +45,8 @@ renderRouter.get("/info", (req, res) => {
         execPath: process.execPath,
         processID: process.pid,
         processPath: process.argv[1],
-        numCPUs:  require("os").cpus().length
+        numCPUs: require("os").cpus().length,
     };
-    res.render("info", { info });
-});
+};
 
 module.exports = renderRouter;

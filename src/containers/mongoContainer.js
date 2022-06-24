@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const db = require("../config/db");
 const { errorHandler } = require("../utils/util");
+const { logger } = require("../middleware/logger");
 
 (async () => {
     await mongoose.connect(db.mongodb.conn);
@@ -16,7 +17,7 @@ class CantainerMongo {
             const res = await this.coll.findById(id).exec();
             return res._doc;
         } catch (error) {
-            console.error(error);
+            logger.error(error);
             return errorHandler("", error);
         }
     };
@@ -25,7 +26,7 @@ class CantainerMongo {
             const resul = await this.coll.find();
             return JSON.parse(JSON.stringify(resul));
         } catch (error) {
-            console.log(error);
+            logger.error(error);
             return errorHandler("", error);
         }
     };

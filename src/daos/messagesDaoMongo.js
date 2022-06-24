@@ -51,10 +51,6 @@ class CartDaoMongo extends ContainerMongo {
         );
     }
 
-    print(objeto) {
-        console.log(util.inspect(objeto, false, 12, true));
-    }
-
     normalizeMessages = (messages) => {
         const formattedMessages = { id: 1000, messages };
         const normalizedData = normalize(formattedMessages, chat);

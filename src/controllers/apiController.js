@@ -1,13 +1,20 @@
 const path = require("path");
 const { faker } = require("@faker-js/faker");
 const { fork } = require("child_process");
+const logger = require("../middleware/logger");
 
-const requestSucessfull = (req, res) => {
+const requestSucessfull = (req, res, next) => {
     res.status(200).send();
 };
 
-const requestError = (req, res) => {
-    res.status(400).json({ error: err.message });
+const requestFail = (err, req, res, next) => {
+    logger.error(`${err.code}: ${err.message}`);
+    return res.status(401).json({
+        error: {
+            code: err.code,
+            message: err.message,
+        },
+    });
 };
 
 const productsTest = (req, res) => {
@@ -42,6 +49,6 @@ const randomNums = (req, res) => {
 module.exports = {
     productsTest,
     requestSucessfull,
-    requestError,
+    requestFail,
     randomNums,
 };

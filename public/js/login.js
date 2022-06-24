@@ -16,5 +16,9 @@ document.getElementById("formLogin").addEventListener("submit", (e) => {
         .then((res) => {
             window.location.href = "/";
         })
-        .catch((err) => alert("Error al intentar loguearse"));
+        .catch((err) => {
+            alert(
+                err.response.data.error.message || "Error al procesar solicitud"
+            );
+        });
 });

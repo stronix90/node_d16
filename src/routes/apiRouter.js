@@ -1,34 +1,31 @@
+const passport = require("passport");
 const apiRouter = require("express").Router();
-
 const {
     productsTest,
     requestSucessfull,
-    requestError,
-    getProcessInfo,
     randomNums,
+    requestFail,
 } = require("../controllers/apiController");
 
-// PASSPORT
-const passport = require("passport");
-
-// ROUTES
+/*
+ *** ROUTES ***
+ */
 apiRouter.get("/productos-test", productsTest);
 
 apiRouter.post(
     "/login",
     passport.authenticate("login", { failWithError: true }),
     requestSucessfull,
-    requestError
+    requestFail
 );
 
 apiRouter.post(
     "/register",
     passport.authenticate("register", { failWithError: true }),
     requestSucessfull,
-    requestError
+    requestFail
 );
 
-apiRouter.get("/randoms", randomNums)
-
+apiRouter.get("/randoms", randomNums);
 
 module.exports = apiRouter;

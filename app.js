@@ -8,6 +8,9 @@ const path = require("path");
 const { port } = require("./src/config/args");
 const exphbs = require("express-handlebars");
 const session = require("express-session");
+const compression = require("compression");
+const logger = require("./src/middleware/logger");
+const customMorgan = require("./src/middleware/customMorgan");
 
 // Messages controller
 const { messagesDao } = require("./src/daos/index");
@@ -22,6 +25,7 @@ const { passport } = require("./src/utils/passport");
 // Socket
 const { Server: HttpServer } = require("http");
 const { Server: IOServer } = require("socket.io");
+
 
 /*
  *** APPLICATION ***
@@ -41,6 +45,7 @@ app.set("views", path.join(__dirname, "/src/views"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+app.use(compression())
 
 app.use(
     session({
@@ -55,8 +60,13 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use("/api", apiRouter);
-app.use("/", renderRouter);
+app.use("/api", customMorgan,  apiRouter);
+app.use("/", customMorgan, renderRouter);
+app.get("*", (req,res) => {
+    logger.warn(`${req.method} ${req.url} no implementado`);
+    res.status(404).render('404');
+
+ } )
 
 /*
  *** SOCKET ***
